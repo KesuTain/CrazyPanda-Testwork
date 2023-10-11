@@ -12,6 +12,6 @@ public class Cannon : MonoBehaviour
         patronObj.transform.position = transform.position;
 
         Vector2 direction = head.transform.position - tail.transform.position;
-        patronObj.RigidbodyItem.AddForce(direction * powerOfShoot, ForceMode2D.Impulse);
+        patronObj.RigidbodyItem.velocity = direction * powerOfShoot;
     }
 }

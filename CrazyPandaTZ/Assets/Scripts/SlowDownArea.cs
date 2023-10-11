@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SlowDownArea : MonoBehaviour
@@ -6,9 +7,19 @@ public class SlowDownArea : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         ICanBeSlowedItem slowedElement = null;
-        if(collision.TryGetComponent<ICanBeSlowedItem>(out slowedElement))
+        if (collision.TryGetComponent<ICanBeSlowedItem>(out slowedElement))
         {
             slowedElement.OnEnterIntoSlowedArea(slowFactor);
         }
     }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        ICanBeSlowedItem slowedElement = null;
+        if (collision.TryGetComponent<ICanBeSlowedItem>(out slowedElement))
+        {
+            slowedElement.OnExitFromSlowedArea(slowFactor);
+        }
+    }
 }
+
